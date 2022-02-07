@@ -23,24 +23,25 @@ for line in in_file_b:
         line_b = line.split()
         if line_b[0] == "write":
             if line_b[1] == "var":
-                out_file_a.write("cout << ")
-                out_file_a.write(line_b[2])
-                out_file_a.write(";\n")
-            else:
-                line_c = line_b[1]
+                line_c = line_b[2]
                 special = False
-                out_file_a.write("cout << \"")
+                out_file_a.write("cout << ")
                 for ch in line_c:
                     if special:
                         special = False
                         if ch == "s":
                             out_file_a.write(" ")
-                        elif ch == "n":
-                            out_file_a.write("\\n")
                     elif ch == "\\":
                         special = True
                     else:
                         out_file_a.write(ch)
+                out_file_a.write("\";\n")
+            else:
+                line_c = line_b[1]
+                special = False
+                out_file_a.write("cout << \"")
+                for ch in line_c:
+                    out_file_a.write(ch)
                 out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")
@@ -56,7 +57,15 @@ for line in in_file_b:
                 out_file_a.write(ttype)
                 out_file_a.write(line_b[1])
                 out_file_a.write("[] = \"")
-                out_file_a.write(line_b[3])
+                line_c = line_b[3]
+                special = False
+                for ch in line_c:
+                    if special == True:
+                        out_file_a.write(" ")
+                    elif ch == "\\":
+                        special = True
+                    else:
+                        out_file_a.write(ch)
                 out_file_a.write("\";\n")
 
     except:
