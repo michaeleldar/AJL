@@ -3,5 +3,5 @@ using namespace std;
 int main()
 {
 cout << "hi";
-int h = 10;
+char h[] = "hi";
 }

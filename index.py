@@ -27,7 +27,7 @@ for line in in_file_b:
             out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")
-            if type(line_b[3]) == "<class 'str'>":
+            if type(line_b[3]) is str:
                 ttype = "char "
             if ttype == "int ":
                 out_file_a.write(ttype)
@@ -35,6 +35,12 @@ for line in in_file_b:
                 out_file_a.write(" = ")
                 out_file_a.write(line_b[3])
                 out_file_a.write(";\n")
+            elif ttype == "char ":
+                out_file_a.write(ttype)
+                out_file_a.write(line_b[1])
+                out_file_a.write("[] = \"")
+                out_file_a.write(line_b[3])
+                out_file_a.write("\";\n")
 
     except:
         continue
