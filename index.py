@@ -7,6 +7,10 @@ out_file = sys.argv[2]
 in_file_a = open(in_file, "r")
 out_file_a = open(out_file, "w")
 
+def error(message):
+    print("ERROR: {message}")
+    quit(0)
+
 out_file_a.write("#include <iostream>\n")
 out_file_a.write("using namespace std;\n")
 out_file_a.write("int main()\n")
@@ -20,6 +24,8 @@ for line in in_file_b:
             out_file_a.write("cout << \"")
             out_file_a.write(line_b[1])
             out_file_a.write("\";\n")
+        
     except:
         continue
+        
 out_file_a.write("}\n")
