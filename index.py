@@ -8,7 +8,7 @@ in_file_a = open(in_file, "r")
 out_file_a = open(out_file, "w")
 
 def error(message):
-    print("ERROR: {message}")
+    print("ERROR: ", message)
     quit(0)
 
 out_file_a.write("#include <iostream>\n")
@@ -24,7 +24,8 @@ for line in in_file_b:
             out_file_a.write("cout << \"")
             out_file_a.write(line_b[1])
             out_file_a.write("\";\n")
-        
+        elif line_b[0] == "var":
+            assert line_b[2] == "=", error("No = in assignment")
     except:
         continue
         
