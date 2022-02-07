@@ -35,7 +35,7 @@ for line in in_file_b:
                         special = True
                     else:
                         out_file_a.write(ch)
-                out_file_a.write("\";\n")
+                out_file_a.write(";\n")
             else:
                 line_c = line_b[1]
                 special = False
