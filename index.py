@@ -3,6 +3,7 @@ sys.stderr = 0
 
 in_file = sys.argv[1]
 out_file = sys.argv[2]
+ttype = "int "
 
 in_file_a = open(in_file, "r")
 out_file_a = open(out_file, "w")
@@ -26,6 +27,15 @@ for line in in_file_b:
             out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")
+            if type(line_b[3]) == "<class 'str'>":
+                ttype = "char "
+            if ttype == "int ":
+                out_file_a.write(ttype)
+                out_file_a.write(line_b[1])
+                out_file_a.write(" = ")
+                out_file_a.write(line_b[3])
+                out_file_a.write(";\n")
+
     except:
         continue
         
