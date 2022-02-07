@@ -1,0 +1,6 @@
+var name = name
+write What\sis\syour\sname?\s
+read name
+write Your\sname\sis\s
+write var name
+write .\n

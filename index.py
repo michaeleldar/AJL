@@ -45,6 +45,8 @@ for line in in_file_b:
                         special = False
                         if ch == "s":
                             out_file_a.write(" ")
+                        elif ch == "n":
+                            out_file_a.write("\\n")
                     elif ch == "\\":
                         special = True
                     else:

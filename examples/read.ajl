@@ -1,2 +1,2 @@
-var h = 0
+var h = h
 read h

@@ -2,9 +2,10 @@
 using namespace std;
 int main()
 {
-cout << "hi mr ";
-char h[] = "pie";
-cout << h;
-cout << "";
-cin >> h;
+char name[] = "name";
+cout << "What is your name? ";
+cin >> name;
+cout << "Your name is ";
+cout << name;
+cout << ".\n";
 }
