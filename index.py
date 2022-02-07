@@ -41,7 +41,14 @@ for line in in_file_b:
                 special = False
                 out_file_a.write("cout << \"")
                 for ch in line_c:
-                    out_file_a.write(ch)
+                    if special:
+                        special = False
+                        if ch == "s":
+                            out_file_a.write(" ")
+                    elif ch == "\\":
+                        special = True
+                    else:
+                        out_file_a.write(ch)
                 out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")
@@ -67,6 +74,10 @@ for line in in_file_b:
                     else:
                         out_file_a.write(ch)
                 out_file_a.write("\";\n")
+        elif line_b[0] == "read":
+            out_file_a.write("cin >> ")
+            out_file_a.write(line_b[1])
+            out_file_a.write(";\n")
 
     except:
         continue

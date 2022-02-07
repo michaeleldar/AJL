@@ -2,6 +2,9 @@
 using namespace std;
 int main()
 {
-char word[] = "hello";
-cout << word;
+cout << "hi mr ";
+char h[] = "pie";
+cout << h;
+cout << "";
+cin >> h;
 }
