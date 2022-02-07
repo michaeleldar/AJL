@@ -22,9 +22,14 @@ for line in in_file_b:
     try:
         line_b = line.split()
         if line_b[0] == "write":
-            out_file_a.write("cout << \"")
-            out_file_a.write(line_b[1])
-            out_file_a.write("\";\n")
+            if line_b[1] == "var":
+                out_file_a.write("cout << ")
+                out_file_a.write(line_b[2])
+                out_file_a.write(";\n")
+            else:
+                out_file_a.write("cout << \"")
+                out_file_a.write(line_b[1])
+                out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")
             if type(line_b[3]) is str:
