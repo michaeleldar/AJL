@@ -1,3 +1,4 @@
-write hi 
+write hi\smr\s 
 var h = pie
 write var h
+write \n

@@ -27,8 +27,20 @@ for line in in_file_b:
                 out_file_a.write(line_b[2])
                 out_file_a.write(";\n")
             else:
+                line_c = line_b[1]
+                special = False
                 out_file_a.write("cout << \"")
-                out_file_a.write(line_b[1])
+                for ch in line_c:
+                    if special:
+                        special = False
+                        if ch == "s":
+                            out_file_a.write(" ")
+                        elif ch == "n":
+                            out_file_a.write("\\n")
+                    elif ch == "\\":
+                        special = True
+                    else:
+                        out_file_a.write(ch)
                 out_file_a.write("\";\n")
         elif line_b[0] == "var":
             assert line_b[2] == "=", error("No = in assignment")

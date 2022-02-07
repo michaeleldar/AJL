@@ -2,7 +2,8 @@
 using namespace std;
 int main()
 {
-cout << "hi";
+cout << "hi mr ";
 char h[] = "pie";
 cout << h;
+cout << "\n";
 }
