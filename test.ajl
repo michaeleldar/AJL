@@ -1,2 +1,3 @@
-write hi
-var h = hi
+write hi 
+var h = pie
+write var h

@@ -3,5 +3,6 @@ using namespace std;
 int main()
 {
 cout << "hi";
-char h[] = "hi";
+char h[] = "pie";
+cout << h;
 }
