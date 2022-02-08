@@ -22,8 +22,8 @@ for line in in_file_b:
     try:
         line_b = line.split()
         if line_b[0] == "write":
-            if line_b[1] == "var":
-                line_c = line_b[2]
+            if line_b[1] != "\"":
+                line_c = line_b[1]
                 special = False
                 out_file_a.write("cout << ")
                 for ch in line_c:
@@ -37,7 +37,7 @@ for line in in_file_b:
                         out_file_a.write(ch)
                 out_file_a.write(";\n")
             else:
-                line_c = line_b[1]
+                line_c = line_b[2]
                 special = False
                 out_file_a.write("cout << \"")
                 for ch in line_c:
@@ -52,21 +52,20 @@ for line in in_file_b:
                     else:
                         out_file_a.write(ch)
                 out_file_a.write("\";\n")
-        elif line_b[0] == "var":
-            assert line_b[2] == "=", error("No = in assignment")
-            if type(line_b[3]) is str:
+        elif line_b[1] == "=":
+            if type(line_b[2]) is str:
                 ttype = "char "
             if ttype == "int ":
                 out_file_a.write(ttype)
-                out_file_a.write(line_b[1])
+                out_file_a.write(line_b[0])
                 out_file_a.write(" = ")
-                out_file_a.write(line_b[3])
+                out_file_a.write(line_b[2])
                 out_file_a.write(";\n")
             elif ttype == "char ":
                 out_file_a.write(ttype)
-                out_file_a.write(line_b[1])
+                out_file_a.write(line_b[0])
                 out_file_a.write("[] = \"")
-                line_c = line_b[3]
+                line_c = line_b[2]
                 special = False
                 for ch in line_c:
                     if special == True:

@@ -1,2 +1,2 @@
-var word = hello
-write var word
+word = hello
+write word
