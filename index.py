@@ -65,7 +65,7 @@ for line in in_file_b:
                 out_file_a.write(ttype)
                 out_file_a.write(line_b[0])
                 out_file_a.write("[] = \"")
-                line_c = line_b[2]
+                line_c = line_b[3]
                 special = False
                 for ch in line_c:
                     if special == True:
